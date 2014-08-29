@@ -1,7 +1,8 @@
 <?php
 include ("config.php");
-$j = $GLOBALS['j'];
-$l = ($GLOBALS['maxkol']) -1;
+$j = mysql_query("SELECT * FROM aprioris ORDER BY Id DESC");
+$row = mysql_fetch_assoc(mysql_query("SELECT * FROM aprioris"));
+$l = (count($row)) - 2;
 $i = 2;
 $sup = ($_POST['sup']);
 if (isset($_POST['check']))
@@ -130,7 +131,7 @@ $i++;
 }
 
 ?>
-<center>Podaj minimalne wsparcie (support) <br><br>
+<br><center>Podaj minimalne wsparcie (support) <br><br>
 <form method="POST">
 <input type ="text" name="sup">
 <input type="submit" name="check" value="Policz"><br><br>
